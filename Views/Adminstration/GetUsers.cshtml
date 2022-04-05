@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "get users";
+}
+
+<link href="~/lib/datatables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="display-5">Users</h1>
+        <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Register" style="width:auto">Create Users</a>
+    </div>
+    <hr />
+    <div class="table-responsive">
+        <table class="table w-100 table-borderless table-striped" id="Users" data-page-length="10">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Email</th>
+                    <th>UserName</th>
+                    <th>City</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
+    <script src="~/js/UsersDataTables.js"></script>
+}

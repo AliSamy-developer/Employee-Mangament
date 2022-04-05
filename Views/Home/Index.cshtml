@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Employee>
+
+@{
+    ViewBag.Title = "Employee List";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+
+@if (Model.Any())
+{
+    <div class="card-group">
+        @foreach (var employee in Model)
+        {
+            var photoPath = "~/images/" + (employee.PhotoPath ??
+            "asparagus-3304997_1280.jpg");
+            <div class="card m-3" style="min-width:18rem; max-width:30.5%;">
+                <div class="card-header">
+                    <h3>@employee.Name</h3>
+                </div>
+                <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+                <div class="card-footer text-center">
+                    <a asp-controller="Home" asp-action="details" asp-route-id="@employee.Id" class="btn btn-primary m-1">View</a>
+                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@employee.Id" class="btn btn-primary m-1">Edit</a>
+                    <a asp-controller="Home" asp-action="Delete" asp-route-id="@employee.Id" class="btn btn-danger m-1">Delete</a>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No Employees created yet
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Use the button below to create Employee
+            </h5>
+            <a class="btn btn-primary" asp-action="create" asp-controller="home" style="width:auto">Create</a>
+
+        </div>
+    </div>
+}
+@section Scripts{
+
+
+    <script src="~/js/UsersDataTables.js"></script>
+}
+
